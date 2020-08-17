@@ -1,0 +1,60 @@
+{
+  "name": "typed-route",
+  "version": "0.0.1",
+  "description": "Type safe routes",
+  "homepage": "https://github.com/Atrue/typed-route",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Atrue/typed-route"
+  },
+  "author": {
+    "name": "Atrue",
+    "url": "https://github.com/Atrue"
+  },
+  "main": "build/index.js",
+  "keywords": [
+    "routes",
+    "router",
+    "routing",
+    "react",
+    "redirect",
+    "typescript"
+  ],
+  "files": [
+    "build",
+    "LICENSE",
+    "package.json",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint ./src/**/*.ts",
+    "test": "jest --coverage"
+  },
+  "dependencies": {
+    "path-to-regexp": ">=0.1.7",
+    "ts-toolbelt": ">=6.0.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.9",
+    "@typescript-eslint/eslint-plugin": "^3.9.0",
+    "@typescript-eslint/parser": "2.23.0",
+    "@typescript-eslint/typescript-estree": "2.23.0",
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.20.0",
+    "jest": "^24.9.0",
+    "ts-jest": "^24.2.0",
+    "typescript": "^3.7.0"
+  },
+  "resolutions": {
+    "@typescript-eslint/eslint-plugin": "2.23.0",
+    "@typescript-eslint/parser": "2.23.0",
+    "@typescript-eslint/typescript-estree": "2.23.0"
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  }
+}
