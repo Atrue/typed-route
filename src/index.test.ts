@@ -4,14 +4,13 @@ import {
 // eslint-disable-next-line import/extensions,import/no-unresolved
 } from './index';
 
-type InferAssertEqual<T, Expected> = A.Equals<InferTypedRoute<T>, InferTypedRoute<Expected>>
+type AssertEquals<T, E> = A.Equals<T, E>
 
 describe('typedRoute', () => {
   it('should be compiled', () => {
     expect(typedRoute('test')).toStrictEqual('test');
     expect(typedRoute<'p1' | 'p2'>('test')).toStrictEqual('test');
     expect(typedRoute<'p1' | 'p2', 'o1' | 'o2'>('test')).toStrictEqual('test');
-    expect(typedRoute<{ arg: string }>('test')).toStrictEqual('test');
   });
 });
 
@@ -82,34 +81,34 @@ describe('routeMap', () => {
         }),
       }),
     };
-    const hasCorrectInfoType: InferAssertEqual<
-      typeof routes.page2.info,
-      TypedRoute<{ id: string | number }>
+    const hasCorrectInfoType: AssertEquals<
+      InferTypedRoute<typeof routes.page2.info>,
+      { id: string }
     > = 1;
     expect(hasCorrectInfoType).toBe(1);
 
-    const hasCorrectLastType: InferAssertEqual<
-      typeof routes.page2.sub.last,
-      TypedRoute<{ id: string | number, param: string | number, last?: string | number }>
+    const hasCorrectLastType: AssertEquals<
+      InferTypedRoute<typeof routes.page2.sub.last>,
+      { id: string, param: string, last?: string }
       > = 1;
     expect(hasCorrectLastType).toBe(1);
 
-    const assertLastIsOptional: InferAssertEqual<
-      typeof routes.page2.sub.last,
-      TypedRoute<{ id: string | number, param: string | number, last: string | number }>
+    const assertLastIsOptional: AssertEquals<
+      InferTypedRoute<typeof routes.page2.sub.last>,
+      TypedRoute<{ id: string, param: string, last: string }>
       > = 0;
     expect(assertLastIsOptional).toBe(0);
 
-    const assertEmptyLastParam: InferAssertEqual<
-      typeof routes.page2.sub.last,
-      TypedRoute<{ id: string | number, param: string | number }>
+    const assertEmptyLastParam: AssertEquals<
+      InferTypedRoute<typeof routes.page2.sub.last>,
+      { id: string, param: string }
       > = 0;
     expect(assertEmptyLastParam).toBe(0);
 
     type InferredRoutes = InferRouteMap<typeof routes>;
-    const hasCorrectInferredRoutes: A.Equals<
+    const hasCorrectInferredRoutes: AssertEquals<
       InferredRoutes['page2']['sub']['index'],
-      { id: string | number, param: string | number }
+      { id: string, param: string }
     > = 1;
     expect(hasCorrectInferredRoutes).toBe(1);
   });

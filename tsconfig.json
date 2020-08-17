@@ -12,7 +12,7 @@
     ],
     "module": "commonjs",
     "moduleResolution": "node",
-    "outDir": "./build",
+    "outDir": "./lib",
     "rootDir": "./src",
     "removeComments": false,
     "sourceMap": false,

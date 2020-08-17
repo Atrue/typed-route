@@ -81,13 +81,11 @@ $ yarn add typed-route
 ### typedRoute
 `typedRoute` - generic function creates string with saved context
 
-`typedRoute<'name'>('/:name')` - creates a string route with one param `{ name: string | number }`
+`typedRoute<'name'>('/:name')` - creates a string route with one param `{ name: string }`
 
-`typedRoute<'id' | 'name'>('/:id/:name')` - creates a string route with a few params `{ id: string | number, name: string | number }`
+`typedRoute<'id' | 'name'>('/:id/:name')` - creates a string route with a few params `{ id: string, name: string }`
 
-`typedRoute<'id', 'name'>('/:id/:name?')` - you can add optional params `{ id: string | number, name?: string | number }`
- 
-`typedRoute<{ id: number, name?: string }>('/:id/:name?')` - or you can provide a param object
+`typedRoute<'id', 'name'>('/:id/:name?')` - you can add optional params `{ id: string, name?: string }`
 
 ### routeMap
 Creates a route map merging all routes string and contexts
@@ -156,19 +154,15 @@ Infer params from types route
 ```ts
 let route = typedRoute<'id'>('/item/:id');
 type I1 = InferTypedRoute<typeof route>;
-// { id: string | number }
+// { id: string }
 
 route = typedRoute<'id' | 'second'>('/item/:id/:second');
 type I2 = InferTypedRoute<typeof route>;
-// { id: string | number; second: string | number }
+// { id: string; second: string }
 
 route = typedRoute<'id', 'optional'>('/item/:id/:optional?');
 type I3 = InferTypedRoute<typeof route>;
-// { id: string | number; optional?: string | number }
-
-route = typedRoute<{ numberOnly: number }>('/item/:numberOnly');
-type I4 = InferTypedRoute<typeof route>;
-// { numberOnly: number }
+// { id: string; optional?: string }
 
 const routes = {
   list: '/list',
@@ -179,7 +173,7 @@ const routes = {
   })
 };
 type I5 = InferTypedRoute<typeof routes.form.subForm.detail>;
-// { id: string | number; sub: string | number }
+// { id: string; sub: string }
 ```
 You can use it with react-router
 ```tsx
@@ -210,11 +204,11 @@ type RoutesParams = InferRouteMap<typeof routes>;
 /* {
  list: object;
  form: {
-   index: { id: string | number };
-   info: { id: string | number };
+   index: { id: string };
+   info: { id: string };
    subForm: {
-     index: { id: string | number };
-     detail: { id: string | number; sub: string | number}
+     index: { id: string };
+     detail: { id: string; sub: string }
    }
  }
 */

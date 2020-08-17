@@ -1,6 +1,6 @@
 {
   "name": "typed-route",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Type safe routes",
   "homepage": "https://github.com/Atrue/typed-route",
   "repository": {
@@ -11,7 +11,9 @@
     "name": "Atrue",
     "url": "https://github.com/Atrue"
   },
-  "main": "build/index.js",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "keywords": [
     "routes",
     "router",
@@ -21,7 +23,7 @@
     "typescript"
   ],
   "files": [
-    "build",
+    "lib",
     "LICENSE",
     "package.json",
     "README.md"
@@ -32,8 +34,8 @@
     "test": "jest --coverage"
   },
   "dependencies": {
-    "path-to-regexp": ">=0.1.7",
-    "ts-toolbelt": ">=6.0.0"
+    "path-to-regexp": "^6.0.0",
+    "ts-toolbelt": "^6.0.0"
   },
   "devDependencies": {
     "@types/jest": "^26.0.9",
@@ -47,7 +49,7 @@
     "eslint-plugin-react": "^7.20.0",
     "jest": "^24.9.0",
     "ts-jest": "^24.2.0",
-    "typescript": "^3.7.0"
+    "typescript": "^3.5.0"
   },
   "resolutions": {
     "@typescript-eslint/eslint-plugin": "2.23.0",
