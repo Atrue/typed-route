@@ -146,7 +146,7 @@ reverseUrl(
 reverseUrl(
   typedRoute<'id', 'optional'>('/item/:id/:optional?'),
   { id: 1, optional: 'test' }
-); // item/test
+); // item/1/test
 ```
 
 ### InferTypedRoute
@@ -213,7 +213,7 @@ type RoutesParams = InferRouteMap<typeof routes>;
  }
 */
 ```
-And you can it with react-router instead of InferTypedRoute
+And you can use it with react-router instead of InferTypedRoute
 ```tsx
 type SubFormProps = RouteComponentProps<RoutesParams['form']['subForm']['detail']>;
 
